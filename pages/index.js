@@ -2,6 +2,7 @@
 import Head from 'next/head';
 import { createGlobalStyle } from 'styled-components';
 import Layout from '../components/Layout';
+import ProductCard from '../components/ProductCard';
 
 export default function Home() {
   return (
@@ -12,7 +13,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GlobalStyle />
-      <Layout>dupaaa</Layout>
+      <Layout>
+        <ProductCard />
+      </Layout>
     </div>
   );
 }

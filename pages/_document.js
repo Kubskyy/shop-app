@@ -1,9 +1,8 @@
-/* eslint-disable @next/next/no-page-custom-font */
-import Head from 'next/head';
+import { Html, Head, Main, NextScript } from 'next/document';
 
-export default function MyApp({ Component, pageProps }) {
+export default function Document() {
   return (
-    <>
+    <Html>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
@@ -12,7 +11,10 @@ export default function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
-    </>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
   );
 }

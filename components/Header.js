@@ -56,4 +56,5 @@ const StyledButton = styled.button`
   color: white;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
+  cursor: pointer;
 `;
