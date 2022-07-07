@@ -18,7 +18,7 @@ const ProductCard = () => (
 export default ProductCard;
 
 const Wrapper = styled.article`
-  max-width: 400px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
 `;
