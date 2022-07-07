@@ -1,4 +1,8 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+  ReactQueryDevtools,
+} from 'react-query';
 import { createGlobalStyle } from 'styled-components';
 
 export default function MyApp({ Component, pageProps }) {
@@ -8,6 +12,7 @@ export default function MyApp({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
       <Component {...pageProps} />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from './Logo';
+import { Logo } from './Logo';
 
-const Header = () => (
+export const Header = () => (
   <StyledHeader>
     <Wrapper>
       <StyledNav>
@@ -15,7 +15,6 @@ const Header = () => (
     </Wrapper>
   </StyledHeader>
 );
-export default Header;
 
 const StyledHeader = styled.header`
   display: relative;

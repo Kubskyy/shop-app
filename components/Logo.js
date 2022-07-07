@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Logo = () => (
+export const Logo = () => (
   <Wrapper>
     <a href="#">
       <StyledImg
@@ -11,8 +11,6 @@ const Logo = () => (
     </a>
   </Wrapper>
 );
-
-export default Logo;
 
 const Wrapper = styled.div`
   display: flex;

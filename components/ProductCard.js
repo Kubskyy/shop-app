@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProductCard = () => (
+export const ProductCard = () => (
   <Wrapper>
     <ImgWrapper>
       <Img src="/scissors.jpg" alt="Nozyczki" />
@@ -14,8 +14,6 @@ const ProductCard = () => (
     <CartButton type="button">Dodaj do koszyka</CartButton>
   </Wrapper>
 );
-
-export default ProductCard;
 
 const Wrapper = styled.article`
   max-width: 350px;

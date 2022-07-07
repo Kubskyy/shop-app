@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './Header';
+import { Header } from './Header';
 
-const Layout = ({ children }) => (
+export const Layout = ({ children }) => (
   <Wrapper>
     <Header />
     <HeroWrapper>
@@ -11,8 +11,6 @@ const Layout = ({ children }) => (
     {children}
   </Wrapper>
 );
-
-export default Layout;
 
 const Wrapper = styled.div`
   max-width: 1600px;
