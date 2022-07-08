@@ -1,14 +1,13 @@
-import React from 'react';
 import styled from 'styled-components';
 
-export const ProductCard = () => (
+export const ProductCard = ({ name, imageUrl, price, imageAlt }) => (
   <Wrapper>
     <ImgWrapper>
-      <Img src="/scissors.jpg" alt="Nozyczki" />
+      <Img src={imageUrl} alt={imageAlt} />
     </ImgWrapper>
     <InfoWrapper>
-      <ProductName>Nożyczki</ProductName>
-      <ProductPrice>21.37 zł</ProductPrice>
+      <ProductName>{name}</ProductName>
+      <ProductPrice>{price} zł</ProductPrice>
     </InfoWrapper>
     <BuyButton type="button">Kup</BuyButton>
     <CartButton type="button">Dodaj do koszyka</CartButton>
@@ -23,6 +22,7 @@ const Wrapper = styled.article`
 const ImgWrapper = styled.div`
   width: 100%;
   min-height: 250px;
+  max-height: 450px;
   overflow: hidden;
   border-radius: 10px;
 `;

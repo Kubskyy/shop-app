@@ -1,8 +1,5 @@
-import {
-  QueryClient,
-  QueryClientProvider,
-  ReactQueryDevtools,
-} from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { createGlobalStyle } from 'styled-components';
 
 export default function MyApp({ Component, pageProps }) {

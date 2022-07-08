@@ -2,10 +2,11 @@ import { useQuery } from 'react-query';
 import { supabase } from '../utils/supabaseClient';
 
 const fetchProducts = async () => {
-  const { data: products, error } = await supabase.from('products').select('*');
+  const { data: products, error } = await supabase.from('product').select('*');
   if (error) {
     throw new Error(error.message);
   }
+  console.log('products', products);
   return products;
 };
 
