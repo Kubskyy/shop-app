@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Checkout } from './Cart/Checkout';
 import { Logo } from './Logo';
 
-export const Header = () => (
-  <StyledHeader>
-    <Wrapper>
-      <StyledNav>
-        <Logo />
-        <StyledDiv>
-          <StyledImg src="/avatar.jpg" alt="avatar" />
-          <StyledButton type="button">Wyloguj się</StyledButton>
-        </StyledDiv>
-      </StyledNav>
-    </Wrapper>
-  </StyledHeader>
-);
+export const Header = () => {
+  const [open, setOpen] = useState(false);
+  const showSidebar = () => setOpen(!open);
+
+  return (
+    <StyledHeader>
+      <Wrapper>
+        <StyledNav>
+          <Logo />
+          <StyledDiv>
+            <StyledImg src="/avatar.jpg" alt="avatar" />
+            <CartButton onClick={showSidebar}>Koszyk</CartButton>
+            <StyledButton type="button">Wyloguj się</StyledButton>
+          </StyledDiv>
+        </StyledNav>
+      </Wrapper>
+      <Checkout open={open} showSidebar={showSidebar} />
+    </StyledHeader>
+  );
+};
 
 const StyledHeader = styled.header`
   display: relative;
@@ -42,6 +50,7 @@ const StyledImg = styled.img`
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 50%;
+  margin-right: 1rem;
 `;
 const StyledButton = styled.button`
   margin-left: 2rem;
@@ -57,3 +66,4 @@ const StyledButton = styled.button`
   font-weight: 500;
   cursor: pointer;
 `;
+const CartButton = styled(StyledButton)``;
