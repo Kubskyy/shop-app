@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Checkout = ({ open, showSidebar }) => (
   <Cart open={open}>
-    <ClosingButton onClick={showSidebar} />
+    <ClosingButton open={open} onClick={showSidebar} />
   </Cart>
 );
 
@@ -17,6 +17,7 @@ const ClosingButton = styled.button`
   font-size: 0;
   background-color: transparent;
   border: none;
+  display: ${(props) => (props.open ? 'inline-block' : 'none')};
   ::hover {
     border: 1px solid black;
   }
@@ -43,5 +44,5 @@ const Cart = styled.div`
   width: 25rem;
   top: 0;
   background-color: white;
-  right: ${(props) => (props.open ? '-100%' : '0')};
+  right: ${(props) => (props.open ? '0' : '-100%')};
 `;

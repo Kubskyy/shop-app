@@ -22,5 +22,6 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family: 'IBM Plex Sans', sans-serif;
+    overflow:hidden;
   }
 `;
