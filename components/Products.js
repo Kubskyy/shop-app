@@ -13,14 +13,8 @@ export function Products() {
       {isSuccess && !products.length && <p>There are no products</p>}
       {isSuccess && (
         <>
-          {products.map(({ id, name, imageUrl, price, imageAlt }) => (
-            <ProductCard
-              key={id}
-              name={name}
-              imageUrl={imageUrl}
-              price={price}
-              imageAlt={imageAlt}
-            />
+          {products.map((product) => (
+            <ProductCard key={product.id} {...product} />
           ))}
         </>
       )}

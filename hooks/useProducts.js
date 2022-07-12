@@ -6,7 +6,6 @@ const fetchProducts = async () => {
   if (error) {
     throw new Error(error.message);
   }
-  console.log('products', products);
   return products;
 };
 

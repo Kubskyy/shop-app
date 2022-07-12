@@ -1,18 +1,29 @@
 import styled from 'styled-components';
+import { useCart } from './Cart/hooks/useCart';
 
-export const ProductCard = ({ name, imageUrl, price, imageAlt }) => (
-  <Wrapper>
-    <ImgWrapper>
-      <Img src={imageUrl} alt={imageAlt} />
-    </ImgWrapper>
-    <InfoWrapper>
-      <ProductName>{name}</ProductName>
-      <ProductPrice>{price} zł</ProductPrice>
-    </InfoWrapper>
-    <BuyButton type="button">Kup</BuyButton>
-    <CartButton type="button">Dodaj do koszyka</CartButton>
-  </Wrapper>
-);
+export const ProductCard = (product) => {
+  const { name, imageUrl, price, imageAlt } = product;
+  const { dispatch } = useCart();
+  const addToCart = () => {
+    dispatch({ type: 'addProduct', payload: product });
+  };
+
+  return (
+    <Wrapper>
+      <ImgWrapper>
+        <Img src={imageUrl} alt={imageAlt} />
+      </ImgWrapper>
+      <InfoWrapper>
+        <ProductName>{name}</ProductName>
+        <ProductPrice>{price} zł</ProductPrice>
+      </InfoWrapper>
+      <BuyButton type="button">Kup</BuyButton>
+      <CartButton type="button" onClick={addToCart}>
+        Dodaj do koszyka
+      </CartButton>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.article`
   max-width: 350px;
@@ -21,8 +32,7 @@ const Wrapper = styled.article`
 `;
 const ImgWrapper = styled.div`
   width: 100%;
-  min-height: 250px;
-  max-height: 450px;
+  height: clamp(250px, 30vw, 450px);
   overflow: hidden;
   border-radius: 10px;
 `;
