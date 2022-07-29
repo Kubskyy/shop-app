@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Checkout } from './Cart/Checkout';
+import { useCart } from './Cart/hooks/useCart';
 import { Logo } from './Logo';
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const showSidebar = () => setOpen(!open);
 
+  const {
+    state: { productsLength },
+  } = useCart();
   return (
     <StyledHeader>
       <Wrapper>
@@ -14,7 +18,9 @@ export const Header = () => {
           <Logo />
           <StyledDiv>
             <StyledImg src="/avatar.jpg" alt="avatar" />
-            <CartButton onClick={showSidebar}>Koszyk</CartButton>
+            <CartButton productsLength={productsLength} onClick={showSidebar}>
+              Koszyk
+            </CartButton>
             <StyledButton type="button">Wyloguj się</StyledButton>
           </StyledDiv>
         </StyledNav>
@@ -66,4 +72,22 @@ const StyledButton = styled.button`
   font-weight: 500;
   cursor: pointer;
 `;
-const CartButton = styled(StyledButton)``;
+const CartButton = styled(StyledButton)`
+  position: relative;
+  ::before {
+    position: absolute;
+    content: '${(props) => props.productsLength}';
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    top: -12px;
+    right: -12px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #ff5a5f;
+  }
+`;

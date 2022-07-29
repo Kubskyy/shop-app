@@ -11,12 +11,14 @@ export const cartReducer = (state, action) => {
         (product) => product.id === newProduct.id,
       );
       const newProducts = [newProduct, ...products];
+      const productsLength = newProducts.length;
 
       const totalPrice = calculateTotalPrice(newProducts);
       if (!isTheNewProductInCart) {
         return {
           ...state,
           products: newProducts,
+          productsLength,
           totalPrice,
         };
       }
@@ -28,11 +30,13 @@ export const cartReducer = (state, action) => {
       const newProducts = products.filter(
         (product) => product.id !== productToDelete.id,
       );
+      const productsLength = newProducts.length;
       const totalPrice = calculateTotalPrice(newProducts);
 
       return {
         ...state,
         products: [...newProducts],
+        productsLength,
         totalPrice,
       };
     }
