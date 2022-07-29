@@ -1,10 +1,6 @@
 /* eslint-disable no-fallthrough */
-const calculateTotalPrice = (products) => {
-  products.reduce((acc, curr) => {
-    console.log(typeof acc, typeof curr.price);
-    return acc + curr.price;
-  }, 0);
-};
+const calculateTotalPrice = (products) =>
+  products.reduce((acc, curr) => acc + curr.price, 0);
 
 export const cartReducer = (state, action) => {
   switch (action.type) {

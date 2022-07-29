@@ -7,7 +7,6 @@ export const Checkout = ({ open, showSidebar }) => {
   const {
     state: { totalPrice, products },
   } = useCart();
-  console.log(totalPrice);
   return (
     <Cart open={open}>
       <CartHeader>
@@ -29,6 +28,8 @@ export const Checkout = ({ open, showSidebar }) => {
 const SummaryWrapper = styled.div`
   padding: 1rem 0;
   width: 100%;
+  margin-top: auto;
+  border-top: 1px solid lightgray;
 `;
 const Wrapper = styled.div`
   width: 100%;
@@ -37,19 +38,22 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 const SummaryText = styled.h2``;
-const Price = styled.p``;
+const Price = styled.p`
+  font-weight: 700;
+`;
 const BuyButton = styled.button`
-  margin-top: 0.5rem;
+  width: 100%;
+  margin-top: 0.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem 0;
   border: none;
   border-radius: 5px;
   background-color: #5331f4;
   color: white;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   cursor: pointer;
 `;
 const CartHeader = styled.div`
@@ -92,6 +96,8 @@ const ClosingButton = styled.button`
 
 const Cart = styled.div`
   position: absolute;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 28rem;
   top: 0;
