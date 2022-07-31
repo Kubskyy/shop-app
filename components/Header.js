@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { useAuth } from './auth/useAuth';
 import { Checkout } from './Cart/Checkout';
 import { useCart } from './Cart/hooks/useCart';
 import { Logo } from './Logo';
 
 export const Header = () => {
-  const [open, setOpen] = useState(false);
-  const showSidebar = () => setOpen(!open);
+  const { session, signOut } = useAuth();
+  const handleSignOut = () => signOut();
 
   const {
-    state: { productsLength },
+    state: { productsLength, isOpen },
+    dispatch,
   } = useCart();
+  const handleOpenMenu = () => dispatch({ type: 'openMenu' });
+  const handleCloseMenu = () => dispatch({ type: 'closeMenu' });
+  const showSidebar = () => (isOpen ? handleCloseMenu() : handleOpenMenu());
   return (
     <StyledHeader>
       <Wrapper>
         <StyledNav>
           <Logo />
           <StyledDiv>
-            <StyledImg src="/avatar.jpg" alt="avatar" />
-            <CartButton productsLength={productsLength} onClick={showSidebar}>
+            <StyledImg src={session?.user?.image} alt="avatar" />
+            <CartButton
+              productsLength={productsLength || '0'}
+              onClick={showSidebar}
+            >
               Koszyk
             </CartButton>
-            <StyledButton type="button">Wyloguj się</StyledButton>
+            <StyledButton onClick={handleSignOut} type="button">
+              Wyloguj się
+            </StyledButton>
           </StyledDiv>
         </StyledNav>
       </Wrapper>
-      <Checkout open={open} showSidebar={showSidebar} />
+      <Checkout showSidebar={showSidebar} />
     </StyledHeader>
   );
 };

@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import { CartItems } from './CartItems';
 import { useCart } from './hooks/useCart';
 
-export const Checkout = ({ open, showSidebar }) => {
+export const Checkout = ({ showSidebar }) => {
   const {
-    state: { totalPrice, products },
+    state: { totalPrice, products, isOpen },
   } = useCart();
   return (
-    <Cart open={open}>
+    <Cart open={isOpen}>
       <CartHeader>
         <CartText>Koszyk</CartText>
-        <ClosingButton open={open} onClick={showSidebar} />
+        <ClosingButton open={isOpen} onClick={showSidebar} />
       </CartHeader>
       <CartItems products={products} />
       <SummaryWrapper>

@@ -40,6 +40,18 @@ export const cartReducer = (state, action) => {
         totalPrice,
       };
     }
+    case 'openMenu': {
+      return {
+        ...state,
+        isOpen: true,
+      };
+    }
+    case 'closeMenu': {
+      return {
+        ...state,
+        isOpen: false,
+      };
+    }
     default: {
       throw new Error(`Unhandled action type`);
     }
