@@ -21,18 +21,20 @@ export const Header = () => {
       <Wrapper>
         <StyledNav>
           <Logo />
-          <StyledDiv>
-            <StyledImg src={session?.user?.image} alt="avatar" />
-            <CartButton
-              productsLength={productsLength || '0'}
-              onClick={showSidebar}
-            >
-              Koszyk
-            </CartButton>
-            <StyledButton onClick={handleSignOut} type="button">
-              Wyloguj się
-            </StyledButton>
-          </StyledDiv>
+          {session && (
+            <StyledDiv>
+              <StyledImg src={session?.user?.image} alt="avatar" />
+              <CartButton
+                productsLength={productsLength || '0'}
+                onClick={showSidebar}
+              >
+                Koszyk
+              </CartButton>
+              <StyledButton onClick={handleSignOut} type="button">
+                Wyloguj się
+              </StyledButton>
+            </StyledDiv>
+          )}
         </StyledNav>
       </Wrapper>
       <Checkout showSidebar={showSidebar} />

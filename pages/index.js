@@ -1,13 +1,9 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { getSession } from 'next-auth/react';
-import { useAuth } from '../components/auth/useAuth';
 import { Layout } from '../components/Layout';
 import { Products } from '../components/Products';
 
 export default function Home() {
-  const { session } = useAuth();
-  console.log(session);
-
   return (
     <Layout>
       <Products />
