@@ -10,11 +10,42 @@ export const cartReducer = (state, action) => {
       const isTheNewProductInCart = products.find(
         (product) => product.id === newProduct.id,
       );
-      const newProducts = [newProduct, ...products];
-      const productsLength = newProducts.length;
 
-      const totalPrice = calculateTotalPrice(newProducts);
       if (!isTheNewProductInCart) {
+        const newProducts = [newProduct, ...products];
+        const productsLength = newProducts.length;
+        const totalPrice = calculateTotalPrice(newProducts);
+        return {
+          ...state,
+          products: newProducts,
+          productsLength,
+          totalPrice,
+        };
+      } else {
+        // const count = products.reduce((acc, product) => {
+        //   if (product.id === isTheNewProductInCart.id) {
+        //     return acc + 1;
+        //   }
+        //   return acc;
+        // }, 1);
+        //console.log(count);
+        const mutableProduct = { ...newProduct };
+
+        const newProducts = [mutableProduct, ...products];
+        console.log(newProducts);
+        //console.log(mutableProduct.quantity);
+        // const filteredProducts = newProducts.filter(
+        //   (item) =>
+        //     item.id !== mutableProduct.id ||
+        //     (item.id === mutableProduct.id &&
+        //       item.quantity === mutableProduct.quantity &&
+        //       item.quantity > 1),
+        // );
+        console.log('====');
+        //console.log(filteredProducts);
+
+        const productsLength = newProducts.length;
+        const totalPrice = calculateTotalPrice(newProducts);
         return {
           ...state,
           products: newProducts,
@@ -23,6 +54,7 @@ export const cartReducer = (state, action) => {
         };
       }
     }
+
     case 'deleteProduct': {
       const products = [...state.products];
       const productToDelete = action.payload;

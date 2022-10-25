@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useCart } from './hooks/useCart';
 
 export const CartItem = (product) => {
-  const { name, imageUrl, price, imageAlt } = product;
+  const { name, imageUrl, price, imageAlt, quantity } = product;
   const { dispatch } = useCart();
   // eslint-disable-next-line no-shadow
   const handleDelete = (product) => {

@@ -7,6 +7,7 @@ export const Checkout = ({ showSidebar }) => {
   const {
     state: { totalPrice, products, isOpen },
   } = useCart();
+
   return (
     <Cart open={isOpen}>
       <CartHeader>
@@ -104,4 +105,8 @@ const Cart = styled.div`
   padding: 1rem;
   background-color: white;
   right: ${(props) => (props.open ? '0' : '-100%')};
+  z-index:100;
+  overflow-y:scroll;
+  
+  }
 `;

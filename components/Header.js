@@ -86,6 +86,7 @@ const StyledButton = styled.button`
 `;
 const CartButton = styled(StyledButton)`
   position: relative;
+  z-index: 0;
   ::before {
     position: absolute;
     content: '${(props) => props.productsLength}';

@@ -3,7 +3,10 @@ import { useCart } from './Cart/hooks/useCart';
 
 export const ProductCard = (product) => {
   const { name, imageUrl, price, imageAlt } = product;
-  const { dispatch } = useCart();
+  const {
+    dispatch,
+    state: { isOpen },
+  } = useCart();
   const addToCart = () => {
     dispatch({ type: 'addProduct', payload: product });
   };
@@ -17,8 +20,10 @@ export const ProductCard = (product) => {
         <ProductName>{name}</ProductName>
         <ProductPrice>{price} zł</ProductPrice>
       </InfoWrapper>
-      <BuyButton type="button">Kup</BuyButton>
-      <CartButton type="button" onClick={addToCart}>
+      <BuyButton open={isOpen} type="button">
+        Kup
+      </BuyButton>
+      <CartButton open={isOpen} type="button" onClick={addToCart}>
         Dodaj do koszyka
       </CartButton>
     </Wrapper>
@@ -46,12 +51,12 @@ const InfoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 `;
 
 const ProductName = styled.p`
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 1rem;
 `;
 
 const ProductPrice = styled.p`
@@ -59,7 +64,7 @@ const ProductPrice = styled.p`
 `;
 
 const BuyButton = styled.button`
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -71,6 +76,7 @@ const BuyButton = styled.button`
   font-weight: 700;
   font-size: 0.75rem;
   cursor: pointer;
+  pointer-events: ${(props) => (props.open ? 'none' : 'auto')};
 `;
 
 const CartButton = styled(BuyButton)`
