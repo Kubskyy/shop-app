@@ -22,39 +22,18 @@ export const cartReducer = (state, action) => {
           productsLength,
           totalPrice,
         };
-      } else {
-        // const count = products.reduce((acc, product) => {
-        //   if (product.id === isTheNewProductInCart.id) {
-        //     return acc + 1;
-        //   }
-        //   return acc;
-        // }, 1);
-        //console.log(count);
-        const mutableProduct = { ...newProduct };
-
-        const newProducts = [mutableProduct, ...products];
-        console.log(newProducts);
-        //console.log(mutableProduct.quantity);
-        // const filteredProducts = newProducts.filter(
-        //   (item) =>
-        //     item.id !== mutableProduct.id ||
-        //     (item.id === mutableProduct.id &&
-        //       item.quantity === mutableProduct.quantity &&
-        //       item.quantity > 1),
-        // );
-        console.log('====');
-        //console.log(filteredProducts);
-
-        const productsLength = newProducts.length;
-        const totalPrice = calculateTotalPrice(newProducts).toFixed(2);
-
-        return {
-          ...state,
-          products: newProducts,
-          productsLength,
-          totalPrice,
-        };
       }
+      const mutableProduct = { ...newProduct };
+      const newProducts = [mutableProduct, ...products];
+      const productsLength = newProducts.length;
+      const totalPrice = calculateTotalPrice(newProducts).toFixed(2);
+
+      return {
+        ...state,
+        products: newProducts,
+        productsLength,
+        totalPrice,
+      };
     }
 
     case 'deleteProduct': {

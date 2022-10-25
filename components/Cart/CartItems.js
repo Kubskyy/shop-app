@@ -4,8 +4,8 @@ import { CartItem } from './CartItem';
 
 export const CartItems = ({ products }) => (
   <StyledItems>
-    {products.map((product, index) => (
-      <CartItem key={index} {...product} />
+    {products.map((product) => (
+      <CartItem key={product.id} {...product} />
     ))}
   </StyledItems>
 );
