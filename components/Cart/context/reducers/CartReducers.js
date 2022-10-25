@@ -14,7 +14,8 @@ export const cartReducer = (state, action) => {
       if (!isTheNewProductInCart) {
         const newProducts = [newProduct, ...products];
         const productsLength = newProducts.length;
-        const totalPrice = calculateTotalPrice(newProducts);
+        const totalPrice = calculateTotalPrice(newProducts).toFixed(2);
+
         return {
           ...state,
           products: newProducts,
@@ -45,7 +46,8 @@ export const cartReducer = (state, action) => {
         //console.log(filteredProducts);
 
         const productsLength = newProducts.length;
-        const totalPrice = calculateTotalPrice(newProducts);
+        const totalPrice = calculateTotalPrice(newProducts).toFixed(2);
+
         return {
           ...state,
           products: newProducts,
